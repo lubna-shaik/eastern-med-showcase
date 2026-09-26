@@ -1,5 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { ProductGrid } from "@/components/product-catalogue";
-import { FinalCta, PageIntro, SectionHeader } from "@/components/sections";
-export const Route = createFileRoute("/products")({ head: () => ({ meta: [{ title: "Medical Products | Eastern Med Supplies" }, { name: "description", content: "Browse the Eastern Med Supplies catalogue of medical equipment, consumables, surgical, diagnostic and hospital products." }, { property: "og:title", content: "Medical Products | Eastern Med Supplies" }, { property: "og:description", content: "Explore medical product categories and send a direct enquiry." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/products" }] }), component: ProductsPage });
-function ProductsPage() { return <><PageIntro eyebrow="Product catalogue" title="Medical products for professional healthcare settings" text="Explore placeholder product categories and catalogue entries. Final products, brands and technical information can be added from one central catalogue." /><section className="section-pad"><div className="site-container"><SectionHeader eyebrow="Browse catalogue" title="Our Products" text="Explore our range of medical products and healthcare solutions." /><ProductGrid /></div></section><FinalCta /></> }
+import { createFileRoute, Outlet } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/products")({
+  component: ProductsLayout,
+});
+
+function ProductsLayout() {
+  return <Outlet />;
+}

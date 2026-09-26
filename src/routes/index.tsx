@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return <>
     <section className="relative overflow-hidden bg-secondary">
-      <div className="site-container grid min-h-[calc(100svh-5.5rem)] items-center gap-10 py-12 lg:grid-cols-[.92fr_1.08fr] lg:py-16">
+      <div className="site-container grid min-h-[44rem] items-center gap-10 py-12 lg:grid-cols-[.92fr_1.08fr] lg:py-16">
         <div className="relative z-10 py-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
           <p className="eyebrow">Better Supplies. Healthier Tomorrow.</p>
           <h1 className="max-w-3xl font-display text-[clamp(2.8rem,6vw,5.5rem)] font-semibold leading-[1.02] text-deep">Reliable Medical Supplies for Better Healthcare</h1>
