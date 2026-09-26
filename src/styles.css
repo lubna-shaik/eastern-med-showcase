@@ -224,3 +224,5 @@
 @keyframes float-gentle { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+.partner-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+.partner-logo { display: grid; width: 14rem; height: 5rem; flex: none; place-items: center; margin-right: 1.5rem; border: 1px solid var(--border); color: var(--muted-foreground); font-size: .75rem; font-weight: 800; text-transform: uppercase; }
