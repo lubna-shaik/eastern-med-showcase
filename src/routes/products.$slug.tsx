@@ -5,7 +5,7 @@ import { getProduct } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { FinalCta } from "@/components/sections";
 
-export const Route = createFileRoute("/products/")({
+export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => { const product = getProduct(params.slug); if (!product) throw notFound(); return product; },
   head: ({ loaderData, params }) => ({ meta: [{ title: loaderData ? `${loaderData.name} | Eastern Med Supplies` : "Product Not Found | Eastern Med Supplies" }, { name: "description", content: loaderData?.description ?? "The requested product could not be found." }, { property: "og:title", content: loaderData?.name ?? "Product Not Found" }, { property: "og:description", content: loaderData?.description ?? "The requested product could not be found." }, { property: "og:type", content: "product" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: `/products/${params.slug}` }] }),
   component: ProductPage,

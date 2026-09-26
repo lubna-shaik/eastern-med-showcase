@@ -15,7 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as WhyUsRouteImport } from './routes/why-us'
-import { Route as ProductsRouteImport } from './routes/products.'
+import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -47,9 +47,9 @@ const WhyUsRoute = WhyUsRouteImport.update({
   path: '/why-us',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProductsRoute = ProductsRouteImport.update({
-  id: '/',
-  path: '/',
+const ProductsSlugRoute = ProductsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
   getParentRoute: () => ProductsRoute,
 } as any)
 
@@ -60,15 +60,16 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRouteWithChildren
   '/services': typeof ServicesRoute
   '/why-us': typeof WhyUsRoute
-  '/products/': typeof ProductsRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/products': typeof ProductsRouteWithChildren
   '/services': typeof ServicesRoute
   '/why-us': typeof WhyUsRoute
-  '/products': typeof ProductsRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -78,7 +79,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRouteWithChildren
   '/services': typeof ServicesRoute
   '/why-us': typeof WhyUsRoute
-  '/products/': typeof ProductsRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -89,9 +90,16 @@ export interface FileRouteTypes {
     | '/products'
     | '/services'
     | '/why-us'
-    | '/products/'
+    | '/products/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/services' | '/why-us' | '/products'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/products'
+    | '/services'
+    | '/why-us'
+    | '/products/$slug'
   id:
     | '__root__'
     | '/'
@@ -100,7 +108,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/services'
     | '/why-us'
-    | '/products/'
+    | '/products/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -156,22 +164,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhyUsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/products/': {
-      id: '/products/'
-      path: '/'
-      fullPath: '/products/'
-      preLoaderRoute: typeof ProductsRouteImport
+    '/products/$slug': {
+      id: '/products/$slug'
+      path: '/$slug'
+      fullPath: '/products/$slug'
+      preLoaderRoute: typeof ProductsSlugRouteImport
       parentRoute: typeof ProductsRoute
     }
   }
 }
 
 interface ProductsRouteChildren {
-  ProductsRoute: typeof ProductsRoute
+  ProductsSlugRoute: typeof ProductsSlugRoute
 }
 
 const ProductsRouteChildren: ProductsRouteChildren = {
-  ProductsRoute: ProductsRoute,
+  ProductsSlugRoute: ProductsSlugRoute,
 }
 
 const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
