@@ -11,3 +11,4 @@
 
 - Keep public website content in reusable shared components and central product data; this keeps placeholder business details easy to replace.
 - Use TanStack file routes for each major website section and product detail page; this preserves direct links and route-specific metadata.
+- Use the official uploaded Eastern Med Supplies logo asset unchanged in all brand placements; this protects the supplied brand identity.
